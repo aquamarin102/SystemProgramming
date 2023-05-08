@@ -3,40 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+namespace Homework1
 {
-    private  int _health = 50;
-    private const  int  _maxHealth = 100;
+    public class Unit : MonoBehaviour
+    {
+        private int _health = 50;
+        private const int _maxHealth = 100;
 
-    private void Start()
-    {
-        ReceiveHealing();
-    }
-
-    private void ReceiveHealing()
-    {
-        StartCoroutine(Regeneration(0.5f, 5));
-    }
-    private IEnumerator Regeneration(float waitTime,   int valueHpRegeneration)
-    {
-        float regenerationTime = 3f;
-        float elapsedTime = 0f;
-        
-        while (_health < _maxHealth)
+        private void Start()
         {
-            if (elapsedTime == regenerationTime)
-                StopAllCoroutines();
-            
-            yield return new WaitForSeconds(waitTime);
-            elapsedTime += waitTime;
-            _health += valueHpRegeneration;
+            ReceiveHealing();
+        }
 
-            if (_health > _maxHealth)
+        private void ReceiveHealing()
+        {
+            StartCoroutine(Regeneration(0.5f, 5));
+        }
+
+        private IEnumerator Regeneration(float waitTime, int valueHpRegeneration)
+        {
+            float regenerationTime = 3f;
+            float elapsedTime = 0f;
+
+            while (_health < _maxHealth)
             {
-                _health = _maxHealth;
-                yield break;
+                if (elapsedTime == regenerationTime)
+                    StopAllCoroutines();
+
+                yield return new WaitForSeconds(waitTime);
+                elapsedTime += waitTime;
+                _health += valueHpRegeneration;
+
+                if (_health > _maxHealth)
+                {
+                    _health = _maxHealth;
+                    yield break;
+                }
+
+                Debug.Log(_health);
             }
-            Debug.Log(_health);
         }
     }
 }
