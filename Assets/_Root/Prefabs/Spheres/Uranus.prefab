@@ -241,6 +241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetRing
       objectReference: {fileID: 0}
+    - target: {fileID: 3386007551061029236, guid: 2ed97751b1e52334891299ad2cde4fa3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed97751b1e52334891299ad2cde4fa3, type: 3}
 --- !u!4 &6006467332878384159 stripped
